@@ -1,0 +1,110 @@
+footer
+  padding: 106px 40px
+  background-color: #0E1F51
+  .logo
+    img
+      height: 53px
+
+  h5
+    color: #F1F5F9
+    font-family: Inter
+    font-weight: 600
+    font-size: 1.125rem
+    line-height: 160%
+    letter-spacing: 0%
+    white-space: nowrap
+
+  .get-help
+    display: flex
+    gap: 0.625rem
+    flex-direction: column
+    white-space: nowrap
+    a
+      font-weight: 500
+      font-size: 0.875rem
+      color: #CBD5E1
+  hr
+    border-top: 1px solid #E6E8EC
+    opacity: 0.5
+    margin: 2.5rem 0
+
+  .contact-us
+    display: flex
+    gap: 0.625rem
+    flex-direction: column
+    white-space: nowrap
+    a ,
+    p
+      font-weight: 500
+      font-size: 0.875rem
+      color: #CBD5E1
+      text-decoration: none
+      margin: 0
+  .social-media
+    margin-top: 2rem
+    margin-bottom: 3rem
+    display: flex
+    justify-content: space-between
+    a
+      width: 50px
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 50px
+      background-color: white
+      border-radius: 50%
+      padding: 10px
+    .microsoft
+      width: 30px
+      height: 30px
+      gap: 2px
+      display: flex
+      flex-wrap: wrap
+      align-items: flex-start
+      justify-content: space-evenly
+      align-content: stretch
+      flex-direction: column
+    .item
+      width: 14px
+      height: 14px
+  .copy-right
+    color: #777E90
+    text-align: center
+  .footer-text
+    display: none
+    color: #CBD5E1
+    font-size: 0.875rem
+
+@media (min-width: 768px)
+  footer
+    padding: 106px 40px !important
+    background-color: #1E293B
+    .footer-text
+      display: block
+      max-width: 420px
+    hr
+      display: none
+    .footer-responsve
+      display: flex
+      gap: 1.5rem
+      justify-content: space-between
+
+    .copy-right
+      display: none
+
+    .social-media
+      margin-bottom: 0
+      margin-top: 1.562rem
+      a
+        padding: 0
+        width: 30px
+        height: 30px
+        align-items: center
+        justify-content: center
+        background-color: transparent
+        border-radius: 50%
+        .bi-twitter-x,
+        .bi-github
+          fill: white
+      .microsoft
+        display: none
