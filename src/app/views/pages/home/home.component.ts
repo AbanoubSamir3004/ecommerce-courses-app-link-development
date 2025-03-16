@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Course, CoursesResponse } from '../../../core/interface/course';
-import { CourseService } from '../../../core/service/course.service';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { TopCoursesComponent } from "./top-courses/top-courses.component";
 
 @Component({
