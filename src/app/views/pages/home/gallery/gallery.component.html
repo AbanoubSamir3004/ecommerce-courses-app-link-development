@@ -19,8 +19,8 @@
         <div class="gallery-slider">
           <div class="images-stack">
             <div class="main-image">
-              <img [src]="sliderImages[currentIndex].image" alt="Gallery Image">
-              <div class="expand-icon">
+              <img [src]="galleryService.sliderImages[galleryService.currentIndex].image" alt="Gallery Image">
+              <div class="expand-icon" (click)="openFullscreenGallery()">
                 <img src="/images/gallery.svg" alt="">
               </div>
             </div>
@@ -32,8 +32,8 @@
 
           <div class="images-slider">
             <div class="slider-track"
-              [ngStyle]="{'transform': 'translateX(calc(' + (-currentIndex * 90) + '% - ' + (currentIndex * 10) + 'px))'}">
-              <div class="slide" *ngFor="let image of sliderImages">
+              [ngStyle]="{'transform': 'translateX(calc(' + (-galleryService.currentIndex * 90) + '% - ' + (galleryService.currentIndex * 10) + 'px))'}">
+              <div class="slide" *ngFor="let image of galleryService.sliderImages">
                 <img [src]="image.image" [alt]="'Gallery image ' + image.id">
               </div>
             </div>
@@ -56,13 +56,13 @@
               </button>
               <div class="slider-pagination">
                 <div class="pagination-dots">
-                  <span *ngFor="let slide of sliderImages; let i = index" [ngClass]="{'active': i === currentIndex}"
+                  <span *ngFor="let slide of galleryService.sliderImages; let i = index" [ngClass]="{'active': i === galleryService.currentIndex}"
                     (click)="goToSlide(i)"></span>
                 </div>
 
 
                 <div class="slider-counter">
-                  {{ currentIndex + 1 }} / {{ sliderImages.length }}
+                  {{ galleryService.currentIndex + 1 }} / {{ galleryService.sliderImages.length }}
                 </div>
               </div>
 

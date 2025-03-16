@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-interface SliderImage {
-  id: number;
-  image: string;
-}
+import { GalleryService } from '../../../../core/service/gallery.service';
+
 
 @Component({
   selector: 'app-gallery',
@@ -12,13 +10,11 @@ interface SliderImage {
   imports: [CommonModule]
 })
 export class GalleryComponent implements OnInit {
-  sliderImages: SliderImage[] = [];
-  currentIndex: number = 0;
 
-  constructor() { }
+
+  constructor(public galleryService:GalleryService) { }
 
   ngOnInit(): void {
-    // في الحالة الحقيقية، ستقوم بجلب البيانات من خلال خدمة API
     const apiData = {"Slider":[
       {"id":1,"image":"https://i.postimg.cc/L4PYJnt2/slider1.png"},
       {"id":2,"image":"https://i.postimg.cc/rFCD93ZH/slider-2.png"},
@@ -27,25 +23,29 @@ export class GalleryComponent implements OnInit {
       {"id":5,"image":"https://i.postimg.cc/7PShxj4L/slider-5.png"}
     ]};
     
-    this.sliderImages = apiData.Slider;
+    this.galleryService.sliderImages = apiData.Slider;
   }
 
   nextSlide(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.sliderImages.length;
+    this.galleryService.currentIndex = (this.galleryService.currentIndex + 1) % this.galleryService.sliderImages.length;
   }
 
   prevSlide(): void {
-    this.currentIndex = (this.currentIndex - 1 + this.sliderImages.length) % this.sliderImages.length;
+    this.galleryService.currentIndex = (this.galleryService.currentIndex - 1 + this.galleryService.sliderImages.length) % this.galleryService.sliderImages.length;
   }
 
   goToSlide(index: number): void {
-    this.currentIndex = index;
+    this.galleryService.currentIndex = index;
   }
 
   getImageForPosition(position: number): string {
-    // حساب مواضع الصور في الخلفية
-    // الصور الخلفية تكون هي الصور التالية للصورة الحالية
-    const index = (this.currentIndex + position) % this.sliderImages.length;
-    return this.sliderImages[index].image;
+    const index = (this.galleryService.currentIndex + position) % this.galleryService.sliderImages.length;
+    return this.galleryService.sliderImages[index].image;
   }
+  
+  openFullscreenGallery(): void {
+    this.galleryService.showFullscreenGallery = true;
+  }
+  
+ 
 }

@@ -1,0 +1,144 @@
+// gallery-fullscreen.component.sass
+.gallery-fullscreen-modal
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.95)
+  z-index: 9999
+  display: flex
+  align-items: center
+  justify-content: center
+  animation: fadeIn 0.3s ease
+  
+  .modal-content
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    
+    .modal-header
+      padding: 1rem
+      display: flex
+      justify-content: flex-end
+      
+      .close-btn
+        background: transparent
+        border: none
+        cursor: pointer
+        width: 32px
+        height: 32px
+        padding: 0
+        
+        svg
+          width: 100%
+          height: 100%
+          fill: white
+    
+    .fullscreen-content
+      flex: 1
+      display: flex
+      flex-direction: column
+      
+      .fullscreen-image
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 0 1rem
+        
+        img
+          max-width: 100%
+          max-height: 70vh
+          object-fit: contain
+          box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5)
+      
+      .fullscreen-navigation
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: 1.5rem
+        
+        .nav-btn
+          background-color: rgba(255, 255, 255, 0.1)
+          border: none
+          border-radius: 50%
+          width: 50px
+          height: 50px
+          display: flex
+          align-items: center
+          justify-content: center
+          cursor: pointer
+          transition: background-color 0.2s ease
+          
+          svg
+            width: 20px
+            height: 20px
+            fill: white
+          
+          &:hover
+            background-color: rgba(255, 255, 255, 0.2)
+        
+        .fullscreen-counter
+          color: white
+          font-size: 1.2rem
+          margin: 0 2rem
+      
+      .fullscreen-thumbnails
+        padding: 1rem
+        overflow-x: auto
+        background-color: rgba(0, 0, 0, 0.5)
+        
+        .thumbnails-container
+          display: flex
+          gap: 10px
+          justify-content: center
+          
+          .thumbnail
+            width: 80px
+            height: 60px
+            cursor: pointer
+            opacity: 0.6
+            transition: all 0.2s ease
+            border: 2px solid transparent
+            border-radius: 4px
+            overflow: hidden
+            
+            &.active
+              opacity: 1
+              border-color: #00aeff
+            
+            &:hover
+              opacity: 0.9
+            
+            img
+              width: 100%
+              height: 100%
+              object-fit: cover
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+// تحسين التجربة على الأجهزة المحمولة
+@media (max-width: 768px)
+  .gallery-fullscreen-modal
+    .modal-content
+      .fullscreen-content
+        .fullscreen-navigation
+          .nav-btn
+            width: 40px
+            height: 40px
+          
+          .fullscreen-counter
+            font-size: 1rem
+            margin: 0 1rem
+        
+        .fullscreen-thumbnails
+          .thumbnails-container
+            .thumbnail
+              width: 60px
+              height: 45px
