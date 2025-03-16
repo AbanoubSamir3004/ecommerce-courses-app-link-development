@@ -1,0 +1,103 @@
+h3
+  text-align: center
+  margin: 1.5rem 0
+  font-weight: 600
+  font-size: 1.5rem
+  color: black
+
+.categories
+  display: flex
+  justify-content: center
+  margin-bottom: 20px
+
+  .category-btn
+    padding: 10px 20px
+    margin: 0 10px
+    border: none
+    background-color: #808080
+    color: white
+    cursor: pointer
+    border-radius: 8px
+    min-width: 157px
+    min-height: 50px
+    font-size: 16px
+    transition: background-color 0.3s
+
+    &.active
+      background-color: #00B8FF
+      color: white
+
+    &:hover
+      background-color: #00B8FF
+      color: white
+
+.card
+  padding: 0.75rem
+  border-radius: 1rem
+  box-shadow: 0px 0px 8px 0px #3B82F61F
+  border: 1px solid #E2E8F0
+  margin-bottom: 1.5rem
+  height: calc(100% - 1.5rem)
+  .badge
+    position: absolute
+    top: 0.75rem
+    right: 0.75rem
+    background-color: #F232BD
+    color: white
+    border-radius: 0
+    width: 50px
+    height: 25px
+    font-size: 12px
+    padding: 6px
+    z-index: 2
+  .add-to-cart
+    position: absolute
+    bottom: 0.75rem
+    left: 0.75rem
+    color: white
+    cursor: pointer
+    z-index: 2
+  .overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #000000
+    opacity: 0.5
+    border-radius: 1rem
+    z-index: 1
+
+  .card-img-top
+    width: 100%
+    height: 200px
+    object-fit: cover
+    border-radius: 0.75rem
+  .course-meta
+    display: flex
+    justify-content: space-between
+    margin-bottom: 10px
+    font-weight: 500
+    .card-category
+      background-color: #00B8FF
+      color: white
+      padding: 0.125rem 0.5rem
+      border-radius: 0.75rem
+  p
+    margin: 0.5rem 0
+  .rating
+    svg
+      width: 22px
+      height: 22px
+      padding: 1px
+
+@media screen and (max-width: 768px)
+
+  .categories
+    display: none
+
+@media screen and (max-width: 991px)
+  .categories
+    .category-btn
+      min-width: auto
+      min-height: auto
