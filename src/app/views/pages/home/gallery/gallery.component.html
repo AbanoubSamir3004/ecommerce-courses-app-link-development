@@ -1,5 +1,5 @@
 <div class="gallery-section">
-  <div class="box">
+  <div class="box d-none d-xxl-block">
     <div class="circl"></div>
   </div>
   <div class="container p-4">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="col-xxl-7 mt-lg-5 mt-xxl-0">
-        <div class="gallery-slider">
+        <div class="gallery-slider" *ngIf="galleryService.sliderImages.length">
           <div class="images-stack">
             <div class="main-image">
               <img [src]="galleryService.sliderImages[galleryService.currentIndex].image" alt="Gallery Image">
@@ -42,7 +42,6 @@
             </div>
           </div>
 
-          <!-- Controls (Shared between layouts) -->
           <div class="slider-controls">
             <div class="navigation-arrows">
               <button class="nav-btn nav-btn-1" (click)="prevSlide()">
@@ -58,22 +57,16 @@
                 </svg>
               </button>
               <div class="slider-pagination">
-                <div class="pagination-dots">
-                  <span *ngFor="let slide of galleryService.sliderImages; let i = index" [ngClass]="{'active': i === galleryService.currentIndex}"
-                    (click)="goToSlide(i)"></span>
-                </div>
-
-
-                <div class="slider-counter">
-                  {{ galleryService.currentIndex + 1 }} / {{ galleryService.sliderImages.length }}
+                <div class="pagination-progress">
+                  <div class="progress-container">
+                    <div class="progress-bar" [style.width]="(galleryService.currentIndex + 1) / galleryService.sliderImages.length * 100 + '%'"></div>
+                  </div>
+                  <div class="slider-counter">
+                    {{ galleryService.currentIndex + 1 }} / {{ galleryService.sliderImages.length }}
+                  </div>
                 </div>
               </div>
-
             </div>
-
-
-
-
           </div>
         </div>
       </div>

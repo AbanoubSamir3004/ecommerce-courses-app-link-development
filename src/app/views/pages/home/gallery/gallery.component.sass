@@ -131,6 +131,8 @@
         display: flex
         align-items: center
         margin-bottom: 15px
+        width: -webkit-fill-available
+        max-width: 720px
 
         .nav-btn-1
           border-radius: 50% 0 0 50%
@@ -162,31 +164,33 @@
               color: white
 
       .slider-pagination
-        display: flex
-        align-items: center
-        justify-content: center
-
-        .pagination-dots
+        width: -webkit-fill-available
+        margin-left: 1rem
+        .pagination-progress
           display: flex
           align-items: center
-          margin-right: 10px
+          justify-content: center
+          width: 100%
 
-          span
-            width: 10px
-            height: 10px
-            border-radius: 50%
+          .progress-container
+            height: 4px
+            width: -webkit-fill-available
             background-color: #ddd
-            margin: 0 5px
-            cursor: pointer
-            transition: background-color 0.2s ease
+            border-radius: 2px
+            overflow: hidden
+            margin-right: 10px
 
-            &.active
+            .progress-bar
+              height: 100%
               background-color: #00aeff
-              transform: scale(1.2)
+              border-radius: 2px
+              transition: width 0.3s ease
 
-        .slider-counter
-          font-size: 0.9rem
-          color: #555
+          .slider-counter
+            font-size: 0.9rem
+            color: #555
+            min-width: 40px
+            text-align: right
 
 @media (max-width: 992px) and (min-width: 769px)
   .gallery-section
