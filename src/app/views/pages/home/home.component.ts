@@ -10,20 +10,37 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class HomeComponent implements OnInit {
-  courses:Array<Course> = []
-  constructor(private courseService:CourseService) { }
+  courses: Array<Course> = []
+
+  selectedCategory = 'all';
+  filteredCourses: Array<Course> = [];
 
   ngOnInit() {
     this.getCourses()
   }
+
+  constructor(private courseService: CourseService) { }
+
   getCourses() {
     this.courseService.getCourses().subscribe({
       next: (response: CoursesResponse) => {
         this.courses = response.Courses
       },
-
+      complete: () => {
+        this.filterCourses('all');
+      }
     })
   }
 
 
+
+  filterCourses(category: string) {
+    this.selectedCategory = category;
+    if (category === 'all') {
+      this.filteredCourses = this.courses;
+    } else {
+      this.filteredCourses = this.courses.filter(course => course.category === category);
+    }
+  }
 }
+
