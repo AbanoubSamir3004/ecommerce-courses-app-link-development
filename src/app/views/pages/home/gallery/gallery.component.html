@@ -1,60 +1,7 @@
-<!-- <div class="gallery-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="gallery-content">
-          <h2 class="gallery-title">
-            <span class="highlight">Check</span> our latest
-            <br>Media Gallery
-          </h2>
-          <p class="gallery-description">
-            Every picture holds a moment,
-            <br>every moment holds a story
-          </p>
-          <button class="btn-view-all">View all Photos</button>
-        </div>
-      </div>
-      
-      <div class="col-md-7">
-        <div class="gallery-slider">
-          <div class="background-images">
-            <img *ngFor="let image of getBackgroundImages(); let i = index" 
-                 [src]="image.image" 
-                 alt="Background Image" 
-                 class="bg-image"
-                 [ngClass]="'bg-image-' + (i+1)">
-          </div>
-          
-          <div class="main-image">
-            <img [src]="sliderImages[currentIndex].image" alt="Gallery Image" class="active-image">
-            <div class="expand-icon">
-              <i class="bi bi-arrows-angle-expand"></i>
-            </div>
-          </div>
-          
-          <div class="slider-navigation">
-            <button class="nav-btn prev-btn" (click)="prevSlide()">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <button class="nav-btn next-btn" (click)="nextSlide()">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-            
-            <div class="slider-progress">
-              <span class="current-slide">{{ currentIndex + 1 }}</span>
-              <span class="separator">/</span>
-              <span class="total-slides">{{ sliderImages.length }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="gallery-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-xxl-5">
         <div class="gallery-content">
           <h2 class="gallery-title">
             <span class="highlight">Check</span> our latest
@@ -68,8 +15,9 @@
         </div>
       </div>
       
-      <div class="col-md-7">
+      <div class="col-xxl-7">
         <div class="gallery-slider">
+          <!-- Desktop Layout (Stacked Images) -->
           <div class="images-stack">
             <div class="main-image">
               <img [src]="sliderImages[currentIndex].image" alt="Gallery Image">
@@ -83,6 +31,16 @@
             </div>
           </div>
           
+          <!-- Mobile Layout (Horizontal Slider) -->
+          <div class="images-slider">
+            <div class="slider-track" [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 90) + '%)'}">
+              <div class="slide" *ngFor="let image of sliderImages">
+                <img [src]="image.image" [alt]="'Gallery image ' + image.id">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Controls (Shared between layouts) -->
           <div class="slider-controls">
             <div class="navigation-arrows">
               <button class="nav-btn" (click)="prevSlide()">
