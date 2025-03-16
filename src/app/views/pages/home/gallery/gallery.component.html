@@ -1,7 +1,7 @@
 <div class="gallery-section">
-  <div class="container">
+  <div class="container p-4">
     <div class="row">
-      <div class="col-xxl-5">
+      <div class="col-xxl-5 d-flex flex-column justify-content-center">
         <div class="gallery-content">
           <h2 class="gallery-title">
             <span class="highlight">Check</span> our latest
@@ -15,9 +15,8 @@
         </div>
       </div>
       
-      <div class="col-xxl-7">
+      <div class="col-xxl-7 mt-lg-5 mt-xxl-0">
         <div class="gallery-slider">
-          <!-- Desktop Layout (Stacked Images) -->
           <div class="images-stack">
             <div class="main-image">
               <img [src]="sliderImages[currentIndex].image" alt="Gallery Image">
@@ -31,9 +30,8 @@
             </div>
           </div>
           
-          <!-- Mobile Layout (Horizontal Slider) -->
           <div class="images-slider">
-            <div class="slider-track" [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 90) + '%)'}">
+            <div class="slider-track" [ngStyle]="{'transform': 'translateX(calc(' + (-currentIndex * 90) + '% - ' + (currentIndex * 10) + 'px))'}">
               <div class="slide" *ngFor="let image of sliderImages">
                 <img [src]="image.image" [alt]="'Gallery image ' + image.id">
               </div>
