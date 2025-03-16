@@ -14,51 +14,63 @@
           <button class="btn-view-all">View all Photos</button>
         </div>
       </div>
-      
+
       <div class="col-xxl-7 mt-lg-5 mt-xxl-0">
         <div class="gallery-slider">
           <div class="images-stack">
             <div class="main-image">
               <img [src]="sliderImages[currentIndex].image" alt="Gallery Image">
               <div class="expand-icon">
-                <i class="bi bi-arrows-angle-expand"></i>
+                <img src="/images/gallery.svg" alt="">
               </div>
             </div>
-            
-            <div *ngFor="let i of [1, 2]" class="stacked-image stacked-image-{{i}}" 
-                 [ngStyle]="{'background-image': 'url(' + getImageForPosition(i) + ')'}">
+
+            <div *ngFor="let i of [1, 2]" class="stacked-image stacked-image-{{i}}"
+              [ngStyle]="{'background-image': 'url(' + getImageForPosition(i) + ')'}">
             </div>
           </div>
-          
+
           <div class="images-slider">
-            <div class="slider-track" [ngStyle]="{'transform': 'translateX(calc(' + (-currentIndex * 90) + '% - ' + (currentIndex * 10) + 'px))'}">
+            <div class="slider-track"
+              [ngStyle]="{'transform': 'translateX(calc(' + (-currentIndex * 90) + '% - ' + (currentIndex * 10) + 'px))'}">
               <div class="slide" *ngFor="let image of sliderImages">
                 <img [src]="image.image" [alt]="'Gallery image ' + image.id">
               </div>
             </div>
           </div>
-          
+
           <!-- Controls (Shared between layouts) -->
           <div class="slider-controls">
             <div class="navigation-arrows">
-              <button class="nav-btn" (click)="prevSlide()">
-                <i class="bi bi-chevron-left"></i>
+              <button class="nav-btn nav-btn-1" (click)="prevSlide()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
               </button>
-              <button class="nav-btn" (click)="nextSlide()">
-                <i class="bi bi-chevron-right"></i>
+              <button class="nav-btn nav-btn-2" (click)="nextSlide()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </svg>
               </button>
-            </div>
-            
-            <div class="slider-pagination">
-              <div class="pagination-dots">
-                <span *ngFor="let slide of sliderImages; let i = index" 
-                      [ngClass]="{'active': i === currentIndex}" 
-                      (click)="goToSlide(i)"></span>
+              <div class="slider-pagination">
+                <div class="pagination-dots">
+                  <span *ngFor="let slide of sliderImages; let i = index" [ngClass]="{'active': i === currentIndex}"
+                    (click)="goToSlide(i)"></span>
+                </div>
+
+
+                <div class="slider-counter">
+                  {{ currentIndex + 1 }} / {{ sliderImages.length }}
+                </div>
               </div>
-              <div class="slider-counter">
-                {{ currentIndex + 1 }} / {{ sliderImages.length }}
-              </div>
+
             </div>
+
+
+
+
           </div>
         </div>
       </div>

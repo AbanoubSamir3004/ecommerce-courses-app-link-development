@@ -1,6 +1,6 @@
 .gallery-section
   background-color: #e6f4fb
-  padding: 4rem 0 6rem
+  padding: 4rem 0
 
   .gallery-content
     padding-right: 2rem
@@ -66,7 +66,7 @@
           position: absolute
           top: 15px
           right: 15px
-          background-color: rgba(255, 255, 255, 0.8)
+          background-color: #00000066
           border-radius: 50%
           width: 36px
           height: 36px
@@ -76,9 +76,8 @@
           cursor: pointer
           z-index: 10
 
-          i
-            font-size: 1rem
-            color: #333
+          img
+            padding: 0.5rem
 
       .stacked-image
         position: absolute
@@ -106,37 +105,43 @@
           left: 0
           z-index: 1
           opacity: 0.6
-    
+
     .images-slider
       display: none
-      
+
     .slider-controls
       display: flex
       flex-direction: column
       align-items: center
-      margin-top: 20px
+      margin-top: 2rem
 
       .navigation-arrows
         display: flex
         align-items: center
         margin-bottom: 15px
 
+        .nav-btn-1
+          border-radius: 50% 0 0 50%
+          background-color: #00B8FF
+
+        .nav-btn-2
+          border-radius: 0 50% 50% 0
+          background-color: #05A1DD
+
         .nav-btn
-          background-color: white
           border: none
-          border-radius: 50%
-          width: 40px
-          height: 40px
+          width: 37px
+          height: 34px
           display: flex
           align-items: center
           justify-content: center
           cursor: pointer
-          margin: 0 5px
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
 
-          i
-            font-size: 1.2rem
-            color: #333
+          svg
+            width: 8px
+            height: 14px
+            fill: white
 
           &:hover
             background-color: #00aeff
@@ -183,15 +188,15 @@
 
       .images-stack
         height: 350px
-        
+
         .main-image
           width: 350px
           left: calc(50% - 175px)
-          
+
         .stacked-image-1
           width: 450px
           left: calc(50% - 225px)
-          
+
         .stacked-image-2
           width: 550px
           left: calc(50% - 275px)
@@ -199,62 +204,62 @@
 @media (max-width: 768px)
   .gallery-section
     padding: 2rem 0 4rem
-    
+
     .gallery-content
       padding-right: 0
       margin-bottom: 2rem
-      
+
       .gallery-title
         font-size: 2rem
-      
+
       .gallery-description
         font-size: 1rem
-    
+
     .gallery-slider
       margin-left: 0
-      
+
       .images-stack
         display: none
-      
+
       .images-slider
         display: block
         position: relative
         width: 100%
         overflow: hidden
         height: 300px
-        
+
         .slider-track
           display: flex
           transition: transform 0.5s ease
           height: 100%
-        
+
         .slide
           flex: 0 0 90%
           width: 90%
           margin-right: 10px
           height: 100%
           position: relative
-          
+
           img
             width: 100%
             height: 100%
             object-fit: cover
             border-radius: 12px
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
-      
+
       .slider-controls
         flex-direction: row
         justify-content: center
         margin-top: 1.5rem
-        
+
         .navigation-arrows
           margin-bottom: 0
           margin-right: 1rem
-        
+
         .slider-pagination
           .pagination-dots
             margin-right: 0.5rem
-          
+
           .slider-counter
             font-size: 0.8rem
 
@@ -263,11 +268,11 @@
     .gallery-slider
       .images-slider
         height: 260px
-        
+
         .slide
           flex: 0 0 85%
           width: 85%
-      
+
       .slider-controls
         .navigation-arrows
           .nav-btn
