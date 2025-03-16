@@ -1,3 +1,15 @@
-<p>
-  home works!
-</p>
+<h3>Top Courses</h3>
+<div class="row">
+  
+  <div class="col-md-4" *ngFor="let course of courses">
+    <div class="card">
+      <img class="card-img-top" src="{{course.image}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{course.title}}</h5>
+        <p class="card-text">{{course.description}}</p>
+        <a href="#" class="btn btn-primary">Enroll</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{courses[0] | json}}
