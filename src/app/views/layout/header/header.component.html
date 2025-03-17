@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md py-4 border-bottom px-md-3">
-  <a class="navbar-brand py-0" [routerLink]="['/']">
+  <a class="navbar-brand py-0" [routerLink]="['/home']">
     <img class="svg-img" src="/images/logo-header.png" alt="Logo" />
   </a>
 
@@ -12,7 +12,7 @@
   <div class="collapse navbar-collapse pe-4 mt-4 mt-md-0" id="navbarSupportedContent">
     <ul class="navbar-nav mb-2 mb-md-0 d-md-flex align-items-md-center ms-4 ms-md-auto">
       <li class="nav-item mb-2 mb-md-0">
-        <div class="cart me-5">
+        <div class="cart me-5" [routerLink]="['/cart']">
           <span class="cart-count">3</span>
           <img src="/images/cart icon.svg" alt="">
         </div>
