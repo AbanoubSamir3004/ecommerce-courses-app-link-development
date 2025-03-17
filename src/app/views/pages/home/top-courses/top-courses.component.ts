@@ -14,7 +14,7 @@ export class TopCoursesComponent implements OnInit {
   courses: Array<Course> = [];
   categories: Array<Category> = [];
 
-  selectedCategory = 'all';
+  selectedCategory = 'All';
   filteredCourses: Array<Course> = [];
 
   constructor(private courseService: CourseService, private cartService: CartService) { }
@@ -30,7 +30,7 @@ export class TopCoursesComponent implements OnInit {
         this.courses = response.Courses;
       },
       complete: () => {
-        this.filterCourses('all');
+        this.filterCourses(this.selectedCategory);
       }
     });
   }
@@ -46,7 +46,7 @@ export class TopCoursesComponent implements OnInit {
   filterCourses(category: string) {
     console.log(category);
     this.selectedCategory = category;
-    if (category.toLocaleLowerCase() === 'all') {
+    if (category === 'All') {
       this.filteredCourses = this.courses;
     } else {
       this.filteredCourses = this.courses.filter(course => course.category === category);
