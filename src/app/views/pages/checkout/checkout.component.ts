@@ -65,7 +65,8 @@ export class CheckoutComponent implements OnInit {
       paymentMethod: ['credit', [Validators.required]],
       cardName: ['', [Validators.required]],
       cardNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{16}$/)]],
-      expiryDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/([0-9]{2})$/)]],
+      // expiryDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/([0-9]{2})$/)]],
+      expiryDate: ['', [Validators.required, this.expiryDateValidator.bind(this)]],
       cvv: ['', [Validators.required, Validators.pattern(/^[0-9]{3}$/)]]
     });
   }
@@ -73,6 +74,24 @@ export class CheckoutComponent implements OnInit {
   get formControls() {
     return this.checkoutForm.controls;
   }
+  
+  expiryDateValidator(control: any) {
+    const value = control.value;
+    if (value) {
+      const [month, year] = value.split('/').map((val: string) => parseInt(val, 10));
+      if (!month || !year || month < 1 || month > 12) {
+        return { invalidExpiryDate: true };
+      }
+      const fullYear = 2000 + year;
+      const today = new Date();
+      const expiryDate = new Date(fullYear, month - 1);
+      if (expiryDate < today) {
+        return { invalidExpiryDate: true };
+      }
+    }
+    return null;
+  }
+
 
   onSubmit() {
     if (this.checkoutForm.invalid) {

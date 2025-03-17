@@ -42,7 +42,7 @@
                 </div>
               </div>
 
-              <div class="card-details" >
+              <div class="card-details">
                 <div class="form-row">
                   <div class="form-group full-width">
                     <label for="cardName">Name of Card <span class="required">*</span></label>
@@ -71,10 +71,14 @@
                     <label for="expiryDate">Expiry Date <span class="required">*</span></label>
                     <p-inputMask id="expiryDate" formControlName="expiryDate" mask="99/99" placeholder="MM/YY"
                       slotChar="MM/YY" class="input-mask"
-                      [ngClass]="{'ng-invalid ng-dirty': formControls['expiryDate'].touched && formControls['expiryDate'].invalid}"></p-inputMask>
+                      [ngClass]="{'ng-invalid ng-dirty': formControls['expiryDate'].touched && formControls['expiryDate'].invalid}">
+                    </p-inputMask>
                     <small class="p-error"
                       *ngIf="formControls['expiryDate'].touched && formControls['expiryDate'].invalid">
                       Valid expiry date required (MM/YY)
+                    </small>
+                    <small class="p-error" *ngIf="formControls['expiryDate'].hasError('invalidExpiryDate')">
+                      Expiry date must be in the future
                     </small>
                   </div>
 
