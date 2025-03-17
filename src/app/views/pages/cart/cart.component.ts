@@ -7,16 +7,19 @@ import { BreadcrumbItem } from '../../../core/interface/breadcrumb';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { CartService } from '../../../core/service/cart.service';
 import { Router } from '@angular/router';
+import { CartCourseItemComponent } from './cart-course-item/cart-course-item.component';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.sass'],
+  standalone: true,
   imports: [
     CommonModule,
     BreadcrumbComponent,
     PageTitleComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CartCourseItemComponent
   ]
 })
 export class CartComponent implements OnInit {
@@ -34,7 +37,7 @@ export class CartComponent implements OnInit {
   tax = 0;
   total = 0;
 
-  constructor(private cartService:CartService, private router:Router) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
     this.loadCartItems();

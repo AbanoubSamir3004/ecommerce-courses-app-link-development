@@ -7,38 +7,9 @@
       <hr>
 
       <div class="course-count">{{ courseCount }} Course(s) in cart</div>
-
       <div class="cart-items">
-        <div class="cart-item" *ngFor="let course of cartItems">
-          <div class="item-container">
-            <div class="course-image">
-              <img [src]="course.image" [alt]="course.title">
-              <div class="discount-badge" *ngIf="course.discount > 0">
-                -${{ course.discount }}
-              </div>
-            </div>
-
-            <div class="course-details">
-              <h3 class="course-title">{{ course.title }}</h3>
-              <p class="course-author">By {{ course.author }}</p>
-
-              <div class="course-rating">
-                <span class="stars">
-                  <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]">★</span>
-                </span>
-                <span class="course-meta">
-                   &nbsp;| {{ course.hours }} Total Hours. {{ course.lectures }} Lectures. {{ course.level }}
-                </span>
-              </div>
-
-              <button class="btn-remove" (click)="removeFromCart(course.id)">Remove</button>
-            </div>
-
-            <div class="course-price">
-              ${{ course.price }}
-            </div>
-          </div>
-        </div>
+        <app-cart-course-item *ngFor="let course of cartItems" [course]="course" (remove)="removeFromCart($event)">
+        </app-cart-course-item>
       </div>
     </div>
 
