@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class GalleryService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   sliderImages: SliderImage[] = [];
   currentIndex: number = 0;
   showFullscreenGallery: boolean = false;
@@ -16,6 +16,6 @@ export class GalleryService {
 
 
   getSliderImages(): Observable<SliderResponse> {
-   return this.http.get<SliderResponse>('https://api.npoint.io/8494c045d50509ba0d5a')
+    return this.http.get<SliderResponse>('8494c045d50509ba0d5a')
   }
 }

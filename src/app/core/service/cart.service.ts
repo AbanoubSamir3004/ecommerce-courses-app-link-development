@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Course } from '../interface/course';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  toastService = inject(ToastService);
   subtotal = 0;
   discount = 0;
   tax = 0;
   total = 0;
   cartItems: Course[] = [];
-
-  constructor() { }
 
   getCartItems(): Course[] {
     const currentCart = localStorage.getItem('cart');
@@ -28,6 +28,9 @@ export class CartService {
     if (!courseExists) {
       cart.push(course);
       localStorage.setItem('cart', JSON.stringify(cart));
+      this.toastService.showSuccess('Course added to cart');
+    } else {
+      this.toastService.showWarning('This Course already in your cart');
     }
   }
 
@@ -43,10 +46,7 @@ export class CartService {
 
   calculateOrderTotals() {
     this.subtotal = this.cartItems.reduce((sum, item) => sum + item.price, 0);
-    this.discount = this.cartItems.reduce((sum, item) => {
-      const itemDiscount = (item.price * item.discount) / 100;
-      return sum + itemDiscount;
-    }, 0);
+    this.discount = this.cartItems.reduce((sum, item) => sum + item.discount, 0);
     this.tax = 20.00;
     this.total = this.subtotal - this.discount + this.tax;
   }
