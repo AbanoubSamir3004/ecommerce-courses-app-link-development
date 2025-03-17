@@ -19,3 +19,11 @@ export interface Course {
 export interface CoursesResponse {
   Courses: Course[]
 }
+
+export interface Category {
+  id: string;
+  name: string;
+}
+export interface CoursesCategoryResponse {
+  Categories: Category[]
+}

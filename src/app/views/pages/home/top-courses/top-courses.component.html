@@ -1,16 +1,10 @@
 <div class="top-courses">
   <h3>Top Courses</h3>
   <div class="categories">
-    <button class="category-btn" [ngClass]="{ active: selectedCategory === 'all' }"
-      (click)="filterCourses('all')">All</button>
-    <button class="category-btn" [ngClass]="{ active: selectedCategory === 'Development' }"
-      (click)="filterCourses('Development')">Development</button>
-    <button class="category-btn" [ngClass]="{ active: selectedCategory === 'Data Science' }"
-      (click)="filterCourses('Data Science')">Data Science</button>
-    <button class="category-btn" [ngClass]="{ active: selectedCategory === 'DevOps' }"
-      (click)="filterCourses('DevOps')">DevOps</button>
-    <button class="category-btn" [ngClass]="{ active: selectedCategory === 'Cloud Computing' }"
-      (click)="filterCourses('Cloud Computing')">Cloud Computing</button>
+    <button *ngFor="let category of categories" class="category-btn"
+      [ngClass]="{ active: selectedCategory === category.name }" (click)="filterCourses(category.name)">
+      {{ category.name }}
+    </button>
   </div>
 
   <div class="row p-4 p-md-0 mt-md-5">
@@ -42,7 +36,6 @@
             {{ course.lectures }} Lectures.
             {{ course.level }}
           </p>
-
         </div>
       </div>
     </div>
