@@ -44,7 +44,6 @@ export class TopCoursesComponent implements OnInit {
   }
 
   filterCourses(category: string) {
-    console.log(category);
     this.selectedCategory = category;
     if (category === 'All') {
       this.filteredCourses = this.courses;

@@ -1,0 +1,14 @@
+<div class="checkout">
+  <div class="row">
+    <div class="col-lg">
+      <div class="header">
+        <app-page-title [title]="'Checkout Page'"></app-page-title>
+        <app-breadcrumb [items]="items"></app-breadcrumb>
+      </div>
+    </div>
+    <div class="col-lg-4" *ngIf="cartService.subtotal">
+      <app-order-details [subtotal]="cartService.subtotal" [discount]="cartService.discount" [tax]="cartService.tax"
+        [total]="cartService.total" (checkout)="proceedToOrderComplete()"></app-order-details>
+    </div>
+  </div>
+</div>

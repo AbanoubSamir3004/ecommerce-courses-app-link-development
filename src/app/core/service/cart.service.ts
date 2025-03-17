@@ -5,6 +5,11 @@ import { Course } from '../interface/course';
   providedIn: 'root'
 })
 export class CartService {
+  subtotal = 0;
+  discount = 0;
+  tax = 0;
+  total = 0;
+  cartItems: Course[] = [];
 
   constructor() { }
 
@@ -35,4 +40,15 @@ export class CartService {
     }
     return this.getCartItems();
   }
+
+  calculateOrderTotals() {
+    this.subtotal = this.cartItems.reduce((sum, item) => sum + item.price, 0);
+    this.discount = this.cartItems.reduce((sum, item) => {
+      const itemDiscount = (item.price * item.discount) / 100;
+      return sum + itemDiscount;
+    }, 0);
+    this.tax = 20.00;
+    this.total = this.subtotal - this.discount + this.tax;
+  }
+
 }

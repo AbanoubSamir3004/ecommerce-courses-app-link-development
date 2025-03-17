@@ -8,13 +8,13 @@
 
       <div class="course-count">{{ courseCount }} Course(s) in cart</div>
       <div class="cart-items">
-        <app-cart-course-item *ngFor="let course of cartItems" [course]="course" (remove)="removeFromCart($event)">
+        <app-cart-course-item *ngFor="let course of cartService.cartItems" [course]="course" (remove)="removeFromCart($event)">
         </app-cart-course-item>
       </div>
     </div>
 
-    <div class="col-lg-4" *ngIf="subtotal">
-      <app-order-details [subtotal]="subtotal" [discount]="discount" [tax]="tax" [total]="total"
+    <div class="col-lg-4" *ngIf="cartService.subtotal">
+      <app-order-details [subtotal]="cartService.subtotal" [discount]="cartService.discount" [tax]="cartService.tax" [total]="cartService.total"
         (checkout)="proceedToCheckout()"></app-order-details>
     </div>
   </div>
