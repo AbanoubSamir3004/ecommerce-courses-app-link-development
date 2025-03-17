@@ -5,10 +5,98 @@
         <app-page-title [title]="'Checkout Page'"></app-page-title>
         <app-breadcrumb [items]="items"></app-breadcrumb>
       </div>
+
+      <div class="checkout-form-container">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+          <div class="form-section">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="country">Country <span class="required">*</span></label>
+                <input type="text" id="country" formControlName="country" placeholder="Enter Country" pInputText
+                  [ngClass]="{'ng-invalid ng-dirty': formControls['country'].touched && formControls['country'].invalid}">
+                <small class="p-error" *ngIf="formControls['country'].touched && formControls['country'].invalid">
+                  Country is required
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="state">State/Union Territory <span class="required">*</span></label>
+                <input type="text" id="state" formControlName="state" placeholder="Enter State" pInputText
+                  [ngClass]="{'ng-invalid ng-dirty': formControls['state'].touched && formControls['state'].invalid}">
+                <small class="p-error" *ngIf="formControls['state'].touched && formControls['state'].invalid">
+                  State is required
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Payment Method</h3>
+
+            <div class="payment-method">
+              <div class="payment-option">
+                <p-radioButton formControlName="paymentMethod" value="credit" inputId="credit"></p-radioButton>
+                <label for="credit">Credit/Debit Card</label>
+                <div class="card-icons">
+                  <img src="/images/visa.png" alt="Visa or Mastercard">
+                </div>
+              </div>
+
+              <div class="card-details" >
+                <div class="form-row">
+                  <div class="form-group full-width">
+                    <label for="cardName">Name of Card <span class="required">*</span></label>
+                    <input type="text" id="cardName" formControlName="cardName" placeholder="Name of card" pInputText
+                      [ngClass]="{'ng-invalid ng-dirty': formControls['cardName'].touched && formControls['cardName'].invalid}">
+                    <small class="p-error" *ngIf="formControls['cardName'].touched && formControls['cardName'].invalid">
+                      Card name is required
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group full-width">
+                    <label for="cardNumber">Card Number <span class="required">*</span></label>
+                    <input type="text" id="cardNumber" formControlName="cardNumber" placeholder="Card Number" pInputText
+                      [ngClass]="{'ng-invalid ng-dirty': formControls['cardNumber'].touched && formControls['cardNumber'].invalid}">
+                    <small class="p-error"
+                      *ngIf="formControls['cardNumber'].touched && formControls['cardNumber'].invalid">
+                      Valid card number is required (16 digits)
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiryDate">Expiry Date <span class="required">*</span></label>
+                    <p-inputMask id="expiryDate" formControlName="expiryDate" mask="99/99" placeholder="MM/YY"
+                      slotChar="MM/YY" class="input-mask"
+                      [ngClass]="{'ng-invalid ng-dirty': formControls['expiryDate'].touched && formControls['expiryDate'].invalid}"></p-inputMask>
+                    <small class="p-error"
+                      *ngIf="formControls['expiryDate'].touched && formControls['expiryDate'].invalid">
+                      Valid expiry date required (MM/YY)
+                    </small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cvv">CVC/CVV <span class="required">*</span></label>
+                    <input type="text" id="cvv" formControlName="cvv" placeholder="Enter CVC/CVV" pInputText
+                      [ngClass]="{'ng-invalid ng-dirty': formControls['cvv'].touched && formControls['cvv'].invalid}">
+                    <small class="p-error" *ngIf="formControls['cvv'].touched && formControls['cvv'].invalid">
+                      Valid CVV is required (3 digits)
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+
     <div class="col-lg-4" *ngIf="cartService.subtotal">
       <app-order-details [subtotal]="cartService.subtotal" [discount]="cartService.discount" [tax]="cartService.tax"
-        [total]="cartService.total" (checkout)="proceedToOrderComplete()"></app-order-details>
+        [total]="cartService.total" (checkout)="onSubmit()"></app-order-details>
     </div>
   </div>
 </div>

@@ -10,8 +10,7 @@ interface SliderImage {
   selector: 'app-gallery-fullscreen',
   templateUrl: './gallery-fullscreen.component.html',
   styleUrls: ['./gallery-fullscreen.component.sass'],
-  imports: [CommonModule],
-  standalone: true
+  imports: [CommonModule]
 })
 export class GalleryFullscreenComponent implements OnInit {
   @Input() images: SliderImage[] = [];
