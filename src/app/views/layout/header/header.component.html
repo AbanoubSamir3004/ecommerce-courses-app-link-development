@@ -13,7 +13,7 @@
     <ul class="navbar-nav mb-2 mb-md-0 d-md-flex align-items-md-center ms-4 ms-md-auto">
       <li class="nav-item mb-2 mb-md-0">
         <div class="cart me-5" [routerLink]="['/cart']">
-          <span class="cart-count">3</span>
+          <span class="cart-count" *ngIf="cartService.getCartItems().length">{{cartService.getCartItems().length}}</span>
           <img src="/images/cart icon.svg" alt="">
         </div>
       </li>

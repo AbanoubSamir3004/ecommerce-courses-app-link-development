@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course, CoursesResponse } from '../../../../core/interface/course';
 import { CourseService } from '../../../../core/service/course.service';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../../core/service/cart.service';
 
 @Component({
   selector: 'app-top-courses',
@@ -16,11 +17,11 @@ export class TopCoursesComponent implements OnInit {
   selectedCategory = 'all';
   filteredCourses: Array<Course> = [];
 
+  constructor(private courseService: CourseService , private cartService:CartService) { }
   ngOnInit() {
     this.getCourses()
   }
 
-  constructor(private courseService: CourseService) { }
 
   getCourses() {
     this.courseService.getCourses().subscribe({
@@ -44,4 +45,7 @@ export class TopCoursesComponent implements OnInit {
     }
   }
 
+  addToCart(course: Course) {
+    this.cartService.addToCart(course);
+  }
 }

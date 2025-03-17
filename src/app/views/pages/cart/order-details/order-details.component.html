@@ -1,0 +1,24 @@
+<h4>Order Details</h4>
+
+<div class="order-details">
+  <div class="order-row">
+    <span class="order-label">Price</span>
+    <span class="order-value">${{ subtotal.toFixed(2) }}</span>
+  </div>
+
+  <div class="order-row discount" *ngIf="discount">
+    <span class="order-label">Discount</span>
+    <span class="order-value">-${{ discount.toFixed(2) }}</span>
+  </div>
+
+  <div class="order-row">
+    <span class="order-label">Tax</span>
+    <span class="order-value">${{ tax.toFixed(2) }}</span>
+  </div>
+
+  <div class="order-row total">
+    <span class="order-label">Total</span>
+    <span class="order-value">${{ total.toFixed(2) }}</span>
+  </div>
+</div>
+<button class="btn-checkout" (click)="onCheckout()">Proceed to Checkout</button>
